@@ -15,14 +15,14 @@ def changeUIState():
     # Get the state-list.
     factlist = clips.eval("(find-all-facts ((?f state-list)) TRUE)")
     if len(factlist) == 0:
-        return jsonify(question="Error in the server, ask support to fix")
+        return jsonify(question="Error in the website and we don't know why")
     currentID = factlist[0]["current"]
     print("currentID1 :", currentID)
 
     # Get the current UI state.
     factlist = clips.eval("(find-all-facts ((?f UI-state)) (eq ?f:id %s))" % currentID)
     if len(factlist) == 0:
-        return jsonify(question="Error in the server, ask support to fix")
+        return jsonify(question="Error in the website and we don't know why")
 
     # Determine the Next/Prev button states.
     state = factlist[0]["state"]
@@ -54,7 +54,7 @@ def question():
     # Handle changes
     factlist = clips.eval("(find-all-facts ((?f state-list)) TRUE)")
     if len(factlist) == 0:
-        return jsonify(question="Error in the server, ask support to fix")
+        return jsonify(question="Error in the website and we don't know why")
     currentID = factlist[0]["current"]
     print("currentID2 :", currentID)
 
